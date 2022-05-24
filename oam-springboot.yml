@@ -1,0 +1,18 @@
+---
+apiVersion: core.oam.dev/v1beta1
+kind: Application
+metadata:
+  name: springboot-application
+spec:
+  components:
+    - name: springboot-service
+      type: webservice
+      properties:
+        image: naresh240/springboothello:v1
+        port: 5000
+      traits:
+        - type: gateway
+          properties:
+            domain: springboot.awsdevopstrainer.com
+            http:
+              "/": 8080
